@@ -1,4 +1,4 @@
-import { createBrowserRouter, useLocation, Navigate } from 'react-router-dom';
+import { createBrowserRouter, useLocation, Navigate } from 'react-router';
 
 import { useAuth } from './providers/auth-provider';
 import Layout from './layout';
