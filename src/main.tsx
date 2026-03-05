@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { RouterProvider } from 'react-router';
 
-import App from './app';
 import AuthProvider from './providers/auth-provider';
-
-import './index.css';
+import router from './router';
+import './index.scss';
 
 async function enableMocking() {
   if (process.env.NODE_ENV !== 'development') {
@@ -22,7 +22,7 @@ enableMocking().then(() => {
   ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
       <AuthProvider>
-        <App />
+        <RouterProvider router={router} />
       </AuthProvider>
     </React.StrictMode>
   );

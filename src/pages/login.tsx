@@ -9,7 +9,7 @@ function Login() {
 
   const from = location.state?.from?.pathname || '/';
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const data = Object.fromEntries(new FormData(event.currentTarget));

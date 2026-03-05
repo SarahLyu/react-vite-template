@@ -26,7 +26,7 @@ const axiosExceptionHandler: Record<AxiosResponseStatus | 'default', (ctx: any) 
   },
 
   ECONNABORTED: () => {
-    console.log('time out');
+    console.warn('time out');
   },
 
   default: () => {
@@ -34,14 +34,10 @@ const axiosExceptionHandler: Record<AxiosResponseStatus | 'default', (ctx: any) 
   },
 };
 
-request.interceptors.request.use((config) => {
-  return config;
-});
+request.interceptors.request.use((config) => config);
 
 request.interceptors.response.use(
-  (response) => {
-    return response.data;
-  },
+  (response) => response.data,
   (error) => {
     const { response } = error;
 

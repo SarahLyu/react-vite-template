@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-export type LoadingProps = {
+interface LoadingProps {
   delay?: number;
-};
+}
 
-const Loading: React.FC<LoadingProps> = ({ delay = 200 }) => {
+export default function Loading({ delay = 200 }: LoadingProps) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -15,6 +15,4 @@ const Loading: React.FC<LoadingProps> = ({ delay = 200 }) => {
   }, [delay]);
 
   return show ? <div>loading...</div> : null;
-};
-
-export default Loading;
+}

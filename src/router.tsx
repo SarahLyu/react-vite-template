@@ -1,11 +1,19 @@
+import { ErrorBoundary } from 'react-error-boundary';
 import { createBrowserRouter, useLocation, Navigate } from 'react-router';
 
-import { useAuth } from './providers/auth-provider';
-import Layout from './layout';
+import ErrorFallback from './components/ErrorFallback';
+import NotFound from './components/NotFound';
 import ErrorPage from './error-page';
-
+import Layout from './layouts';
 import Login from './pages/login';
 import Public from './pages/public';
+import { useAuth } from './providers/auth-provider';
+
+const withErrorBoundary = (Component: React.ComponentType) => (
+  <ErrorBoundary FallbackComponent={ErrorFallback} resetKeys={[Math.random()]}>
+    <Component />
+  </ErrorBoundary>
+);
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const location = useLocation();
@@ -20,7 +28,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
 const router = createBrowserRouter([
   {
-    element: <Layout />,
+    element: withErrorBoundary(Layout),
     errorElement: <ErrorPage />,
     children: [
       {
@@ -46,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '*',
+    element: <NotFound />,
   },
 ]);
 

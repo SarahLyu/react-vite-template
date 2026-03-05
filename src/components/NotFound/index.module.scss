@@ -1,0 +1,31 @@
+.not-found {
+  display: flex;
+  width: 100%;
+  min-height: 80vh;
+  align-items: center;
+  justify-content: center;
+
+  &-content {
+    padding: 20px;
+    text-align: center;
+  }
+
+  &-code {
+    margin: 0;
+    color: $error-color;
+    font-size: 120px;
+    font-weight: 700;
+  }
+
+  &-title {
+    margin: 10px 0 20px;
+    font-size: 28px;
+  }
+
+  &-desc {
+    margin: 0 0 30px;
+    color: $text-secondary;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
