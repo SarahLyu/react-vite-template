@@ -9,12 +9,14 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint --cache --ext .ts,.tsx src --report-unused-disable-directives",
+    "lint:style": "stylelint '**/*.{css,scss}' --fix",
     "format": "prettier --cache --write \"src/**/*.{ts,tsx,css,json,md}\"",
     "prepare": "husky"
   },
   "lint-staged": {
     "*.{ts,tsx}": "eslint",
-    "*.{tsx,ts,css,json}": "prettier --write"
+    "*.{css,scss}": "stylelint",
+    "*.{tsx,ts,css,scss,json}": "prettier --write"
   },
   "dependencies": {
     "axios": "^1.13.5",
@@ -44,8 +46,14 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
     "msw": "^2.12.10",
+    "postcss-scss": "^4.0.9",
     "prettier": "^3.8.1",
     "sass": "^1.97.3",
+    "stylelint": "^17.4.0",
+    "stylelint-config-idiomatic-order": "^10.0.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-order": "^8.0.0",
+    "stylelint-prettier": "^5.0.3",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^7.3.1",
