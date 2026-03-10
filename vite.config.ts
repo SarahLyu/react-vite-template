@@ -2,6 +2,7 @@ import path, { resolve } from 'path';
 
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
+import svgr from 'vite-plugin-svgr';
 
 const resolveAlias = (url: string) => {
   if (url.startsWith('@/')) {
@@ -13,7 +14,7 @@ const resolveAlias = (url: string) => {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), svgr({ include: '**/*.svg' })],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),

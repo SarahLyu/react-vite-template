@@ -27,6 +27,7 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.39.3",
+    "@svgr/core": "^8.1.0",
     "@types/node": "^22.19.12",
     "@types/react": "^18.3.28",
     "@types/react-dom": "^18.3.7",
@@ -47,7 +48,8 @@
     "sass": "^1.97.3",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "vite-plugin-svgr": "^4.5.0"
   },
   "msw": {
     "workerDirectory": "public"
