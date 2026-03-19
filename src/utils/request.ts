@@ -5,32 +5,36 @@ export const request = axios.create({
   timeout: 3000,
 });
 
-type AxiosResponseStatus = 400 | 401 | 403 | 500 | 'ECONNABORTED';
+type AxiosResponseStatus = 400 | 401 | 403 | 429 | 500 | 'ECONNABORTED';
 
 const axiosExceptionHandler: Record<AxiosResponseStatus | 'default', (ctx: any) => void> = {
-  400: () => {
-    console.error(400);
+  400: (ctx) => {
+    console.error(400, ctx?.data?.message || '请求参数错误');
   },
 
-  401: () => {
-    console.error(401);
+  401: (ctx) => {
+    console.error(401, ctx?.data?.message || '登录已过期，请重新登录');
   },
 
-  403: () => {
+  403: (ctx) => {
     window.postMessage('AUTH:LOGOUT');
-    console.error('403');
+    console.error('403', ctx?.data?.message || '无权限访问，请联系管理员');
   },
 
-  500: () => {
-    console.error(500);
+  429: (ctx) => {
+    console.error(429, ctx?.data?.message || '请求过于频繁，请稍后重试');
   },
 
-  ECONNABORTED: () => {
-    console.warn('time out');
+  500: (ctx) => {
+    console.error(500, ctx?.data?.message || '服务器内部错误');
   },
 
-  default: () => {
-    console.error('unknown exception');
+  ECONNABORTED: (ctx) => {
+    console.warn('time out', ctx?.data?.message || '请求超时，请检查网络');
+  },
+
+  default: (ctx) => {
+    console.error('unknown exception', ctx?.data?.message || '未知错误');
   },
 };
 
