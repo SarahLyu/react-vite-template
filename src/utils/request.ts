@@ -13,11 +13,11 @@ const axiosExceptionHandler: Record<AxiosResponseStatus | 'default', (ctx: any) 
   },
 
   401: (ctx) => {
+    window.postMessage('AUTH:LOGOUT');
     console.error(401, ctx?.data?.message || '登录已过期，请重新登录');
   },
 
   403: (ctx) => {
-    window.postMessage('AUTH:LOGOUT');
     console.error('403', ctx?.data?.message || '无权限访问，请联系管理员');
   },
 
