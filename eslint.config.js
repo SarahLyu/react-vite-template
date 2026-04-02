@@ -97,7 +97,6 @@ export default tseslint.config(
       'no-var': 'error',
       'require-await': 'error',
       semi: ['error', 'always'],
-      '@typescript-eslint/no-explicit-any': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': ['error', { ignore: ['children', 'className'] }],
       'react-hooks/rules-of-hooks': 'error',
