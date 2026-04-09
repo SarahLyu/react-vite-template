@@ -7,7 +7,8 @@ import router from './router';
 import './index.scss';
 
 async function enableMocking() {
-  if (process.env.NODE_ENV !== 'development') {
+  // 通过环境变量控制是否启用 MSW
+  if (process.env.NODE_ENV !== 'development' || !__USE_MOCK__) {
     return;
   }
 

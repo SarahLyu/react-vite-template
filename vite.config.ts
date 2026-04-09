@@ -18,6 +18,9 @@ const isAnalyze = process.env.ANALYZE === 'true';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  define: {
+    __USE_MOCK__: JSON.stringify(process.env.USE_MOCK === 'true'),
+  },
   plugins: [
     react(),
     svgr({ include: '**/*.svg' }),
